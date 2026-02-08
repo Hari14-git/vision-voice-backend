@@ -1,5 +1,5 @@
 import os
-import gradio as gr
+#import gradio as gr
 
 from brain_of_the_doctor import encode_image, analyze_image_with_query
 from voice_of_the_user import transcribe_with_groq
