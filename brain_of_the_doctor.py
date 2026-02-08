@@ -1,17 +1,13 @@
-import os
 import base64
 from groq import Groq
-from dotenv import load_dotenv
-load_dotenv()
-
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+import os
 
 def encode_image(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode("utf-8")
+    with open(image_path, "rb") as f:
+        return base64.b64encode(f.read()).decode("utf-8")
 
-def analyze_image_with_query(query, model, encoded_image):
-    client = Groq(api_key=GROQ_API_KEY)
+def analyze_image_with_query(query, encoded_image, model):
+    client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
     messages = [
         {
